@@ -1,0 +1,358 @@
+
+/*ROLLNUMBER:19R21A0409
+Devoloping the employee management Application*/
+import java.util.Scanner;
+
+
+import java.util.HashMap;
+import java.util.HashSet;
+
+
+class Employee {
+	
+	private int id;
+	private String name;
+	private long mobilenumber;
+	private String email;
+	private String gender;
+	private String address;
+      private double salary;
+      private String dob;
+      private String doj;
+      private String experience;
+	
+	
+	
+	public int getId()
+      {
+        return id;
+      }
+
+    public String getName() 
+     {
+        return name;
+     }
+
+    public long getMobilenumber() 
+    {
+        return mobilenumber;
+    }
+
+    public String getEmail() 
+    {
+        return email;
+    }
+
+    public String getGender() 
+    {
+        return gender;
+    }
+
+    public String getAddress()
+    {
+        return address;
+    }
+
+    public double getSalary() 
+    {
+        return salary;
+    }
+
+    public String getDob() 
+    {
+        return dob;
+    }
+
+    public String getDoj()
+    {
+        return doj;
+    }
+
+    public String getExperience() 
+    {
+        return experience;
+    }
+
+    public void setId(int id)
+    {
+        this.id = id;
+    }
+
+    public void setName(String name) 
+    {
+        this.name = name;
+    }
+
+    public void setMobilenumber(long mobilenumber)
+    {
+        this.mobilenumber = mobilenumber;
+    }
+
+    public void setEmail(String email)
+    {
+        this.email = email;
+    }
+
+    public void setGender(String gender)
+    {
+        this.gender = gender;
+    }
+
+    public void setAddress(String address) 
+    {
+        this.address = address;
+    }
+
+    public void setSalary(double salary)
+    {
+        this.salary = salary;
+    }
+
+    public void setDob(String dob)
+    {
+        this.dob = dob;
+    }
+
+    public void setDoj(String doj)
+    {
+        this.doj = doj;
+    }
+
+    public void setExperience(String experience) 
+    {
+        this.experience = experience;
+    }
+
+	//override
+	public String toString() {
+		return "Employee [id="+ id +", name=" + name + ",mobilenumber =" + mobilenumber + ", email=" + email
+				+ ", gender=" + gender + ", address=" + address + ", salary=" + salary + ", dob=" + dob + ", doj=" + doj + ", experience=" + experience + "]";
+	}
+	public Employee(int id, String name, long mobilenumber, String email, String gender, String address, double salary, String dob, String doj, String experience) {
+        this.id = id;
+        this.name = name;
+        this.mobilenumber = mobilenumber;
+        this.email = email;
+        this.gender = gender;
+        this.address = address;
+        this.salary = salary;
+        this.dob = dob;
+        this.doj = doj;
+        this.experience = experience;
+    
+	}
+
+}
+
+
+ class EmployeeDetails {
+	
+	HashSet<Employee> empset=new HashSet<Employee>();
+	
+	Employee emp1=new Employee(1, "anu", 9121896724, "anu@gmail.com", "female", "hyderabad", 55000.0, "27/08/2002", "23/9/2022", "6months");
+	Employee emp2=new Employee(2, "luckky", 9701496105, "lucky@gmail.com","male", "hyderabad", 45000.0, "24/08/2007", "23/6/2022","2years");
+	Employee emp3=new Employee(3, "lavanya", 779098990, "lavanya@gmail.com","female", "Delhi",35000.0, "12/09/1970", "3/03/2021", "4years");
+	Employee emp4=new Employee(4, "reddy", 9701674033, "reddyya@gmail.com", "male", "pune",  70000.0, "12/09/1960", "3/03/2020", "5years");
+	
+	Scanner sc=new Scanner(System.in);
+	boolean flag=false;
+	int id;
+	 String name;
+	 long mobilenumber;
+	 String email;
+	 String gender;
+	 String address;
+       double salary;
+       String dob;
+       String doj;
+       String experience;
+	public EmployeeDetails() {
+		
+		empset.add(emp1);
+		empset.add(emp2);
+		empset.add(emp3);
+		empset.add(emp4);
+		
+	}
+	
+	//view all employees details
+	public void viewallemployees() {
+		for(Employee emp:empset) {
+			System.out.println(emp);
+		}
+	}
+	//view single employee details
+	public void viewemployee(){
+		
+		System.out.println("Enter id: ");
+		id=sc.nextInt();
+		for(Employee emp:empset) {
+			if(emp.getId()==id) {
+				System.out.println(emp);
+				flag=true;
+			}
+			
+		}
+		if(!flag) {
+			System.out.println("Employee with this id is not present");
+		}
+	}
+	//updating the employee details
+	public void updatemployee() {
+		System.out.println("Enter id: ");
+		id=sc.nextInt();
+		boolean flag=false;
+		for(Employee emp:empset) {
+			if(emp.getId()==id) {
+				System.out.println("Enter name: ");
+				name=sc.next();
+                          System.out.println("Enter mobilenumber: ");
+                          mobilenumber=sc.nextLong();
+				System.out.println("Enter email: ");
+				email=sc.next();
+				System.out.println("Enter gender: ");
+				gender=sc.next();
+				System.out.println("Enter address: ");
+				address=sc.next();
+				
+
+				System.out.println("Enter new Salary");
+				salary=sc.nextDouble();
+				System.out.println("Enter Dob: ");
+				dob=sc.next();
+                          System.out.println("Enter Doj: ");
+				doj=sc.next();
+				System.out.println("Enter experience: ");
+				experience=sc.next();
+				emp.setName(name);
+				emp.setMobilenumber(mobilenumber);
+				emp.setEmail(email);
+				emp.setGender(gender);
+				emp.setAddress(address);
+                          emp.setSalary(salary);
+				emp.setDob(dob);
+				emp.setDoj(doj);
+				emp.setExperience(experience);
+				System.out.println("Updated Details of employee are: ");
+				System.out.println(emp);
+				flag=true;
+			}
+		}
+		if(!flag) {
+			System.out.println("Employee is not present");
+		}
+		else {
+			System.out.println("Employee details updated successfully !!");
+		}
+	}
+	//delete employee details
+	public void deletemployee() {
+		System.out.println("Enter id");
+		id=sc.nextInt();
+		boolean flag=false;
+	      Employee empdelete=null;
+		for(Employee emp:empset) {
+			if(emp.getId()==id) {
+				empdelete=emp;
+                        
+				flag=true;
+			}
+		}
+		if(!flag) {
+			System.out.println("Employee is not present");
+		}
+		else {
+			empset.remove(empdelete);
+			System.out.println("Employee deleted successfully!!");
+		}
+	}
+	//adding employee details
+	public void addemployee() {
+		             System.out.println("Enter name: ");
+				name=sc.next();
+                          System.out.println("Enter mobilenumber: ");
+                          mobilenumber=sc.nextLong();
+				System.out.println("Enter email: ");
+				email=sc.next();
+				System.out.println("Enter gender: ");
+				gender=sc.next();
+				System.out.println("Enter address: ");
+				address=sc.next();
+				
+
+				System.out.println("Enter new Salary");
+				salary=sc.nextDouble();
+				System.out.println("Enter Dob: ");
+				dob=sc.next();
+                          System.out.println("Enter Doj: ");
+				doj=sc.next();
+				System.out.println("Enter experience: ");
+				experience=sc.next();
+
+		
+		Employee emp=new Employee(id, name, mobilenumber, email, gender, address, salary, dob, doj, experience);
+		
+		empset.add(emp);
+		System.out.println(emp);
+		System.out.println("Employee details addeed successsfully");
+		
+	}
+	
+}
+
+public class Mainprogram {
+
+	EmployeeDetails ob=new EmployeeDetails();
+	static boolean S = true;
+	public static void choices() {
+        System.out.println("Employee Managment System  ");
+        System.out.println("1. Add Employee details");
+        System.out.println("2.View Employee details");
+        System.out.println("3.Update Employee details");
+        System.out.println("4. Delete Emplloyee details");
+        System.out.println("5.View All Employee details");
+        System.out.println("6. Exit ");
+    }
+	 
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		EmployeeDetails ob=new EmployeeDetails();
+		
+		do {
+			choices();
+			System.out.println("Enter your Choice");
+			int choice=sc.nextInt();
+			switch(choice) {
+			
+			case 1:
+				System.out.println("Add Employee details");
+				ob.addemployee();
+				break;
+			case 2:
+				System.out.println("View Employee details");
+				ob.viewemployee();
+				break;
+			case 3:
+				System.out.println("Update Employee details");
+				ob.updatemployee();
+				break;
+			case 4:
+				System.out.println("Delete Employee details");
+				ob.deletemployee();
+				break;
+			case 5:
+				System.out.println("view All Employee details");
+				ob.viewallemployees();
+				break;
+			case 6:
+				System.out.println("Thank you!");
+				System.exit(0);
+				
+			default:
+				System.out.println("Please enter number between 1 to 6");
+				break;
+			}
+		}while(S);
+		
+			}
+	}
